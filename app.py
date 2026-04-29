@@ -250,7 +250,7 @@ with tab1:
         st.markdown('<div class="section-title" style="font-size:16px;">Raw Data Preview</div>', unsafe_allow_html=True)
         preview = df[["date","open","high","low","close","volume","target"]].tail(10).copy()
         preview["target"] = preview["target"].map({1: "⬆ UP", 0: "⬇ DOWN"})
-        st.dataframe(preview.style.applymap(
+        st.dataframe(preview.style.map(
             lambda v: "color:#34d399" if v=="⬆ UP" else ("color:#f87171" if v=="⬇ DOWN" else ""),
             subset=["target"]
         ), use_container_width=True, hide_index=True)
